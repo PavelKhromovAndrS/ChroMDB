@@ -1,25 +1,43 @@
 package com.example.chromdb.adapter
 
-import android.content.Context
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chromdb.databinding.MovieItemBinding
 import com.example.chromdb.model.entities.MovieItem
+import com.bumptech.glide.Glide
+import com.example.chromdb.R
 
+class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-class MovieAdapter(private val context: Context, private val movieList: List<MovieItem>) :
-    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
-    class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    var movieList = emptyList<MovieItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        TODO("Not yet implemented")
+
+        val glide: Glide = Glide.get(parent.context)
+
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = MovieItemBinding.inflate(inflater, parent, false)
+        return MovieViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
+        val movie = movieList[position]
+        with(holder.binding) {
+            title.text = movie.title
+            year.text = movie.year.toString()
+
+            Glide.with(imageMovie.context)
+                .load(movie.image)
+                .placeholder(R.drawable.ic_baseline_movie_24)
+                .into(imageMovie)
+        }
     }
 
-    override fun getItemCount(): Int {
-        return movieList.size
-    }
+    override fun getItemCount(): Int = movieList.size
+
+    class MovieViewHolder(
+        val binding: MovieItemBinding
+    ) : RecyclerView.ViewHolder(binding.root)
 }

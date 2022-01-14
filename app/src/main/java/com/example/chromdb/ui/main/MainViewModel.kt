@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.chromdb.model.AppState
+import com.example.chromdb.model.entities.MovieItem
 import com.example.chromdb.model.repository.Repository
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
@@ -16,10 +17,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
 
     private fun getDataFromLocalSource() {
         liveData.value = AppState.Loading
-        Thread{
+        Thread {
             Thread.sleep(1000)
             liveData.postValue(AppState.Success(repository.getMovieItemFromServer()))
         }.start()
-
     }
 }

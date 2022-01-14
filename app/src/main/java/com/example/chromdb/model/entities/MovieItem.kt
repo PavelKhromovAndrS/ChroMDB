@@ -1,3 +1,11 @@
 package com.example.chromdb.model.entities
 
-data class MovieItem(val id: Int, val title: String, val image:Int, val year: Int)
+import androidx.annotation.DrawableRes
+
+data class MovieItem(
+    val id: Int,
+    val title: String,
+    val image:String,
+    val year: Int
+
+    )
