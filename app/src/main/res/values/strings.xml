@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ChroMDB</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_item_menu">Main</string>
+    <string name="favorite_item_menu">favorite</string>
+    <string name="full_movie_item_menu">fullmovie</string>
 </resources>
