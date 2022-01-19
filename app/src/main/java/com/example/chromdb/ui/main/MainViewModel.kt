@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.chromdb.model.AppState
-import com.example.chromdb.model.entities.MovieItem
 import com.example.chromdb.model.repository.Repository
 
 class MainViewModel(private val repository: Repository) : ViewModel() {

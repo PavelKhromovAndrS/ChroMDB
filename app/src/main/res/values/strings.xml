@@ -5,4 +5,10 @@
     <string name="main_item_menu">Main</string>
     <string name="favorite_item_menu">favorite</string>
     <string name="full_movie_item_menu">fullmovie</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="rating">Rating</string>
+    <string name="year">Year</string>
+    <string name="film">Film</string>
+    <string name="image_description">image_description</string>
 </resources>

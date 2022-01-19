@@ -3,11 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/drawable/ic_baseline_movie_24.xml" value="0.36153846153846153" />
-        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/main_activity.xml" value="0.1" />
-        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/main_fragment.xml" value="0.35104166666666664" />
-        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/movie_item.xml" value="0.35104166666666664" />
-        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/menu/bottom_navigation.xml" value="0.27071823204419887" />
+        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/fragment_details_movie.xml" value="0.1953125" />
+        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/main_fragment.xml" value="0.1707193515704154" />
+        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/movie_item.xml" value="0.27219202898550726" />
       </map>
     </option>
   </component>

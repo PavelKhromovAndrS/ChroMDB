@@ -2,7 +2,6 @@ package com.example.chromdb
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.chromdb.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
