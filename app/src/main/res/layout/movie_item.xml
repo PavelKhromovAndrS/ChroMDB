@@ -4,30 +4,31 @@
     android:id="@+id/movie_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="10sp"
-    app:cardCornerRadius="10sp">
+    android:layout_margin="@dimen/base_margin"
+    app:cardCornerRadius="@dimen/base_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp">
+        android:layout_margin="@dimen/base_margin">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Matrix"
+            android:text="@string/film"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp16"
             app:layout_constraintBottom_toTopOf="@id/image_movie"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:contentDescription="@string/image_description"
             android:id="@+id/image_movie"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/sp120"
+            android:layout_height="@dimen/sp160"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_movie_24"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,9 +40,9 @@
             android:id="@+id/year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2000"
+            android:text="@string/year"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="@dimen/sp12"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

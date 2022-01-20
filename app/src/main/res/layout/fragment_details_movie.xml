@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movie_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/base_margin"
+    app:cardCornerRadius="@dimen/base_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title_movie_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_margin"
+            android:text="@string/title"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp36"
+            app:layout_constraintBottom_toTopOf="@id/details_image_movie_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/details_image_movie_iv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_margin"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/image_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_movie_24"
+            app:layout_constraintEnd_toEndOf="@id/title_movie_tv"
+            app:layout_constraintStart_toStartOf="@id/title_movie_tv"
+            app:layout_constraintTop_toBottomOf="@id/title_movie_tv" />
+
+        <TextView
+            android:id="@+id/description_movie_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_margin"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="@id/title_movie_tv"
+            app:layout_constraintStart_toStartOf="@id/title_movie_tv"
+            app:layout_constraintTop_toBottomOf="@id/details_image_movie_iv" />
+
+        <TextView
+            android:id="@+id/rating_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_margin"
+            android:text="@string/rating"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_movie_tv" />
+
+        <TextView
+            android:id="@+id/year_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_margin"
+            android:text="@string/year"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rating_tv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

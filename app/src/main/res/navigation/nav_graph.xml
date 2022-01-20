@@ -9,7 +9,11 @@
         android:id="@+id/mainFragment"
         android:name="com.example.chromdb.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_detailsMovieFragment"
+            app:destination="@id/detailsMovieFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchMovieFragment"
         android:name="com.example.chromdb.ui.screens.SearchMovieFragment"
@@ -25,4 +29,13 @@
         android:name="com.example.chromdb.ui.screens.FavoriteMovieFragment"
         android:label="fragment_favorite_movie"
         tools:layout="@layout/fragment_favorite_movie" />
+    <fragment
+        android:id="@+id/detailsMovieFragment"
+        android:name="com.example.chromdb.ui.screens.DetailsMovieFragment"
+        android:label="fragment_details_movie"
+        tools:layout="@layout/fragment_details_movie" >
+        <action
+            android:id="@+id/action_detailsMovieFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>
