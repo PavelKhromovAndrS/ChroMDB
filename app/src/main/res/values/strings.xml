@@ -10,5 +10,6 @@
     <string name="rating">Rating</string>
     <string name="year">Year</string>
     <string name="film">Film</string>
+    <string name="extension">Extension function</string>
     <string name="image_description">image_description</string>
 </resources>

@@ -15,7 +15,9 @@ import com.example.chromdb.adapter.UserActionListener
 import com.example.chromdb.databinding.MainFragmentBinding
 import com.example.chromdb.model.AppState
 import com.example.chromdb.model.entities.MovieItem
+import com.example.chromdb.showSnackBar
 import com.example.chromdb.ui.screens.DetailsMovieFragment
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -62,6 +64,7 @@ class MainFragment : Fragment() {
         val layoutManager = GridLayoutManager(requireContext(), 3)
         adapter = MovieAdapter(object : UserActionListener {
             override fun onMovieDetails(movieItem: MovieItem) {
+                view?.showSnackBar(R.string.extension)
                 val bundle = Bundle().apply {
                     putParcelable(DetailsMovieFragment.ARG_MOVIE, movieItem)
                 }
