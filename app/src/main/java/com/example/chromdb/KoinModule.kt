@@ -3,6 +3,7 @@ package com.example.chromdb
 import com.example.chromdb.model.repository.Repository
 import com.example.chromdb.model.repository.RepositoryImpl
 import com.example.chromdb.ui.main.MainViewModel
+import get
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
