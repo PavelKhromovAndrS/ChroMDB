@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.chromdb.model.AppState
 import com.example.chromdb.model.entities.rest_entities.config.ConfigDTO
 import com.example.chromdb.model.entities.rest_entities.config.Images
+import com.example.chromdb.model.entities.rest_entities.genres.Genre
 import com.example.chromdb.model.entities.rest_entities.genres.GenreDTO
 import com.example.chromdb.model.entities.rest_entities.popular.PopularDTO
 import com.example.chromdb.model.entities.rest_entities.popular.PopularMovieItem
@@ -18,6 +19,8 @@ import retrofit2.Response
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
+
+    var genresData = emptyList<Genre>()
     val popularLiveData: MutableLiveData<List<PopularMovieItem>> = MutableLiveData()
     val configLiveData: MutableLiveData<Images> = MutableLiveData()
     val topRatedLiveData: MutableLiveData<List<TopRatedMovieItem>> = MutableLiveData()
@@ -31,6 +34,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
         viewModelScope.async {
             topRatedLiveData.value = repository.getTopRatedFromServer()
+        }
+        viewModelScope.async {
+            genresData = repository.getGenreItemFromServer()!!
         }
     }
 }

@@ -15,4 +15,6 @@
     <string name="genre">Genre</string>
     <string name="popular_tv">Популярное</string>
     <string name="top_rated">Высокий рейтинг</string>
+    <string name="load_genres">Load Genres</string>
+    <string name="genres">Genres</string>
 </resources>

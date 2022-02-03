@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.chromdb.R
 import com.example.chromdb.adapter.TopRatedAdapter
@@ -16,6 +18,8 @@ import com.example.chromdb.databinding.MainFragmentBinding
 import com.example.chromdb.model.entities.rest_entities.popular.PopularMovieItem
 import com.example.chromdb.model.entities.rest_entities.top_rated.TopRatedMovieItem
 import com.example.chromdb.ui.screens.DetailsMovieFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
@@ -76,7 +80,6 @@ class MainFragment : Fragment() {
             }
         })
     }
-
 
     private fun setPopularData(popularData: List<PopularMovieItem>, baseUrl: String) =
         with(binding) {
