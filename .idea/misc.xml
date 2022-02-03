@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/fragment_details_movie.xml" value="0.1953125" />
+        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/fragment_favorite_movie.xml" value="0.1953125" />
+        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/fragment_search_movie.xml" value="0.3129528985507246" />
         <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/genre_item.xml" value="0.26721014492753625" />
+        <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/main_activity.xml" value="0.1671195652173913" />
         <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/main_fragment.xml" value="0.1707193515704154" />
         <entry key="..\:/Kotlin projects/ChroMDB/app/src/main/res/layout/movie_item.xml" value="0.27219202898550726" />
       </map>
