@@ -1,5 +1,6 @@
 package com.example.chromdb.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.chromdb.R
 import com.example.chromdb.adapter.TopRatedAdapter
@@ -18,9 +18,10 @@ import com.example.chromdb.databinding.MainFragmentBinding
 import com.example.chromdb.model.entities.rest_entities.popular.PopularMovieItem
 import com.example.chromdb.model.entities.rest_entities.top_rated.TopRatedMovieItem
 import com.example.chromdb.ui.screens.DetailsMovieFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+private const val IS_ADULT_KEY = "IS_ADULT_KEY"
+
 
 class MainFragment : Fragment() {
 
@@ -46,15 +47,34 @@ class MainFragment : Fragment() {
         viewModel.loadData()
 
         viewModel.configLiveData.observe(viewLifecycleOwner, Observer {
-            secureBaseUrl = it.secure_base_url.toString() + (it.backdrop_sizes?.get(3))
+            secureBaseUrl = it.secure_base_url.toString() + (it.backdrop_sizes.get(3))
         })
 
-        viewModel.popularLiveData.observe(viewLifecycleOwner, Observer {
-            it.let { it1 -> setPopularData(it1, secureBaseUrl) }
-        })
-        viewModel.topRatedLiveData.observe(viewLifecycleOwner, Observer {
-            it.let { it1 -> setTopRatedData(it1, secureBaseUrl) }
-        })
+        activity?.let {
+            if (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_ADULT_KEY, false)) {
+
+                showAdultContent()
+                adultCb.isChecked = true
+            } else {
+                viewModel.popularLiveData.observe(viewLifecycleOwner, Observer {
+                    it.let { it1 ->
+                        setPopularData(it1, secureBaseUrl)
+                    }
+                })
+                viewModel.topRatedLiveData.observe(viewLifecycleOwner, Observer {
+                    it.let { it1 -> setTopRatedData(it1, secureBaseUrl) }
+                })
+            }
+
+
+            adultCb.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    isAdultContent(true)
+                } else {
+                    isAdultContent(false)
+                }
+            }
+        }
 
         popularAdapter = PopularAdapter(object : PopularItemActionListener {
             override fun onPopularItemDetails(movieItem: PopularMovieItem) {
@@ -80,6 +100,32 @@ class MainFragment : Fragment() {
             }
         })
     }
+
+    private fun isAdultContent(isAdult: Boolean) {
+        activity?.let {
+            with(it.getPreferences(Context.MODE_PRIVATE).edit()) {
+                putBoolean(IS_ADULT_KEY, isAdult)
+                apply()
+            }
+        }
+    }
+
+    private fun showAdultContent() {
+        viewModel.topRatedLiveData.observe(viewLifecycleOwner, Observer {
+            it.let {
+                it[1].adult = true
+                var notAdultContent: MutableList<TopRatedMovieItem> =
+                    mutableListOf<TopRatedMovieItem>()
+                for (movie in it) {
+                    if (movie.adult == true)
+                        notAdultContent.add(movie)
+                }
+                setTopRatedData(notAdultContent, secureBaseUrl)
+            }
+        })
+
+    }
+
 
     private fun setPopularData(popularData: List<PopularMovieItem>, baseUrl: String) =
         with(binding) {

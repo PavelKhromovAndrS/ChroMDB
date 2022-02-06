@@ -9,7 +9,7 @@ import com.example.chromdb.model.entities.rest_entities.top_rated.TopRatedMovieI
 class RepositoryImpl : Repository {
 
     override suspend fun getGenreItemFromServer(): List<Genre>? {
-        return  RetrofitInstance.api.getGenres().body()?.genres
+        return RetrofitInstance.api.getGenres().body()?.genres
     }
 
     override suspend fun getPopularFromServer(): List<PopularMovieItem>? {
@@ -17,20 +17,12 @@ class RepositoryImpl : Repository {
     }
 
     override suspend fun getConfigFromServer(): Images? {
-        return  RetrofitInstance.api.getConfig().body()?.images
+        return RetrofitInstance.api.getConfig().body()?.images
     }
 
-    override suspend fun getTopRatedFromServer():List<TopRatedMovieItem>? {
-        return  RetrofitInstance.api.getTopRated().body()?.results
+    override suspend fun getTopRatedFromServer(): List<TopRatedMovieItem>? {
+        return RetrofitInstance.api.getTopRated().body()?.results
     }
 
-    override fun getGenres(): List<Genre> {
-
-        return mutableListOf(
-            (Genre(1, "Adventure")),
-            (Genre(2, "Comedy")),
-            (Genre(3, "Thriller"))
-        )
-    }
 
 }

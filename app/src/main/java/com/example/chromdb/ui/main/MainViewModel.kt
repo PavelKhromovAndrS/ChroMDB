@@ -19,8 +19,6 @@ import retrofit2.Response
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
-
-    var genresData = emptyList<Genre>()
     val popularLiveData: MutableLiveData<List<PopularMovieItem>> = MutableLiveData()
     val configLiveData: MutableLiveData<Images> = MutableLiveData()
     val topRatedLiveData: MutableLiveData<List<TopRatedMovieItem>> = MutableLiveData()
@@ -34,9 +32,6 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
         viewModelScope.async {
             topRatedLiveData.value = repository.getTopRatedFromServer()
-        }
-        viewModelScope.async {
-            genresData = repository.getGenreItemFromServer()!!
         }
     }
 }

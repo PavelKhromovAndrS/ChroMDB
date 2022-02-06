@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TopRatedMovieItem(
-    val adult: Boolean,
+    var adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
     val id: Int,
