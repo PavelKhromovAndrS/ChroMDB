@@ -13,6 +13,7 @@ import com.example.chromdb.model.entities.rest_entities.popular.PopularMovieItem
 import com.example.chromdb.model.entities.rest_entities.top_rated.TopRatedDTO
 import com.example.chromdb.model.entities.rest_entities.top_rated.TopRatedMovieItem
 import com.example.chromdb.model.repository.Repository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -20,18 +21,22 @@ import retrofit2.Response
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
     val popularLiveData: MutableLiveData<List<PopularMovieItem>> = MutableLiveData()
-    val configLiveData: MutableLiveData<Images> = MutableLiveData()
     val topRatedLiveData: MutableLiveData<List<TopRatedMovieItem>> = MutableLiveData()
 
     fun loadData() {
-        viewModelScope.async {
-            popularLiveData.value = repository.getPopularFromServer()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            popularLiveData.postValue(repository.getPopularFromServer())
         }
-        viewModelScope.async {
-            configLiveData.value = repository.getConfigFromServer()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            topRatedLiveData.postValue(repository.getTopRatedFromServer())
         }
-        viewModelScope.async {
-            topRatedLiveData.value = repository.getTopRatedFromServer()
+    }
+
+    fun loadHistoryData(item: TopRatedMovieItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveEntity(item)
         }
     }
 }

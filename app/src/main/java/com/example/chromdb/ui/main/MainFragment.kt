@@ -15,22 +15,24 @@ import com.example.chromdb.adapter.PopularAdapter
 import com.example.chromdb.adapter.PopularItemActionListener
 import com.example.chromdb.adapter.TopRatedActionListener
 import com.example.chromdb.databinding.MainFragmentBinding
+import com.example.chromdb.model.database.Database
 import com.example.chromdb.model.entities.rest_entities.popular.PopularMovieItem
 import com.example.chromdb.model.entities.rest_entities.top_rated.TopRatedMovieItem
+import com.example.chromdb.model.repository.RepositoryImpl
 import com.example.chromdb.ui.screens.DetailsMovieFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val IS_ADULT_KEY = "IS_ADULT_KEY"
-
+const val SECURE_URL = "https://image.tmdb.org/t/p/original"
 
 class MainFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModel()
     private var _binding: MainFragmentBinding? = null
+    private var repositoryImpl: RepositoryImpl = RepositoryImpl()
     private val binding get() = _binding!!
     private lateinit var topRatedAdapter: TopRatedAdapter
     private lateinit var popularAdapter: PopularAdapter
-    private lateinit var secureBaseUrl: String
 
 
     override fun onCreateView(
@@ -46,23 +48,16 @@ class MainFragment : Fragment() {
 
         viewModel.loadData()
 
-        viewModel.configLiveData.observe(viewLifecycleOwner, Observer {
-            secureBaseUrl = it.secure_base_url.toString() + (it.backdrop_sizes.get(3))
-        })
-
         activity?.let {
             if (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_ADULT_KEY, false)) {
-
                 showAdultContent()
                 adultCb.isChecked = true
             } else {
                 viewModel.popularLiveData.observe(viewLifecycleOwner, Observer {
-                    it.let { it1 ->
-                        setPopularData(it1, secureBaseUrl)
-                    }
+                    setPopularData(it)
                 })
                 viewModel.topRatedLiveData.observe(viewLifecycleOwner, Observer {
-                    it.let { it1 -> setTopRatedData(it1, secureBaseUrl) }
+                    setTopRatedData(it)
                 })
             }
 
@@ -75,6 +70,8 @@ class MainFragment : Fragment() {
                 }
             }
         }
+
+
 
         popularAdapter = PopularAdapter(object : PopularItemActionListener {
             override fun onPopularItemDetails(movieItem: PopularMovieItem) {
@@ -90,6 +87,7 @@ class MainFragment : Fragment() {
 
         topRatedAdapter = TopRatedAdapter(object : TopRatedActionListener {
             override fun onTopRatedDetails(movieItem: TopRatedMovieItem) {
+                viewModel.loadHistoryData(movieItem)
                 val bundle = Bundle().apply {
                     putParcelable(DetailsMovieFragment.ARG_TOP_RATED_MOVIE, movieItem)
                 }
@@ -99,6 +97,7 @@ class MainFragment : Fragment() {
                 )
             }
         })
+
     }
 
     private fun isAdultContent(isAdult: Boolean) {
@@ -120,23 +119,23 @@ class MainFragment : Fragment() {
                     if (movie.adult == true)
                         notAdultContent.add(movie)
                 }
-                setTopRatedData(notAdultContent, secureBaseUrl)
+                setTopRatedData(notAdultContent)
             }
         })
 
     }
 
 
-    private fun setPopularData(popularData: List<PopularMovieItem>, baseUrl: String) =
+    private fun setPopularData(popularData: List<PopularMovieItem>) =
         with(binding) {
-            popularAdapter.secureBaseUrl = baseUrl
+            popularAdapter.secureBaseUrl = SECURE_URL
             popularAdapter.popularItemList = popularData
             popularListRv.adapter = popularAdapter
         }
 
-    private fun setTopRatedData(topRatedData: List<TopRatedMovieItem>, baseUrl: String) =
+    private fun setTopRatedData(topRatedData: List<TopRatedMovieItem>) =
         with(binding) {
-            topRatedAdapter.secureBaseUrl = baseUrl
+            topRatedAdapter.secureBaseUrl = SECURE_URL
             topRatedAdapter.topRatedItemList = topRatedData
             topRatedListRv.adapter = topRatedAdapter
         }
