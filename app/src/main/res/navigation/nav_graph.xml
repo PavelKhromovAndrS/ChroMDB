@@ -14,8 +14,8 @@
             android:id="@+id/action_mainFragment_to_detailsMovieFragment"
             app:destination="@id/detailsMovieFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_favoriteMovieFragment"
-            app:destination="@id/favoriteMovieFragment" />
+            android:id="@+id/action_mainFragment_to_movieHistoryFragment"
+            app:destination="@id/movieHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchMovieFragment"
@@ -40,5 +40,13 @@
         <action
             android:id="@+id/action_detailsMovieFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_detailsMovieFragment_to_favoriteMovieFragment"
+            app:destination="@id/favoriteMovieFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/movieHistoryFragment"
+        android:name="com.example.chromdb.ui.screens.movie_history.MovieHistoryFragment"
+        android:label="movie_history_fragment"
+        tools:layout="@layout/movie_history_fragment" />
 </navigation>
