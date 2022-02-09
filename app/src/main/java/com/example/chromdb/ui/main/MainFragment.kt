@@ -29,7 +29,6 @@ class MainFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModel()
     private var _binding: MainFragmentBinding? = null
-    private var repositoryImpl: RepositoryImpl = RepositoryImpl()
     private val binding get() = _binding!!
     private lateinit var topRatedAdapter: TopRatedAdapter
     private lateinit var popularAdapter: PopularAdapter
@@ -48,30 +47,12 @@ class MainFragment : Fragment() {
 
         viewModel.loadData()
 
-        activity?.let {
-            if (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_ADULT_KEY, false)) {
-                showAdultContent()
-                adultCb.isChecked = true
-            } else {
-                viewModel.popularLiveData.observe(viewLifecycleOwner, Observer {
-                    setPopularData(it)
-                })
-                viewModel.topRatedLiveData.observe(viewLifecycleOwner, Observer {
-                    setTopRatedData(it)
-                })
-            }
-
-
-            adultCb.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    isAdultContent(true)
-                } else {
-                    isAdultContent(false)
-                }
-            }
-        }
-
-
+        viewModel.popularLiveData.observe(viewLifecycleOwner, Observer {
+            setPopularData(it)
+        })
+        viewModel.topRatedLiveData.observe(viewLifecycleOwner, Observer {
+            setTopRatedData(it)
+        })
 
         popularAdapter = PopularAdapter(object : PopularItemActionListener {
             override fun onPopularItemDetails(movieItem: PopularMovieItem) {
@@ -99,32 +80,6 @@ class MainFragment : Fragment() {
         })
 
     }
-
-    private fun isAdultContent(isAdult: Boolean) {
-        activity?.let {
-            with(it.getPreferences(Context.MODE_PRIVATE).edit()) {
-                putBoolean(IS_ADULT_KEY, isAdult)
-                apply()
-            }
-        }
-    }
-
-    private fun showAdultContent() {
-        viewModel.topRatedLiveData.observe(viewLifecycleOwner, Observer {
-            it.let {
-                it[1].adult = true
-                var notAdultContent: MutableList<TopRatedMovieItem> =
-                    mutableListOf<TopRatedMovieItem>()
-                for (movie in it) {
-                    if (movie.adult == true)
-                        notAdultContent.add(movie)
-                }
-                setTopRatedData(notAdultContent)
-            }
-        })
-
-    }
-
 
     private fun setPopularData(popularData: List<PopularMovieItem>) =
         with(binding) {

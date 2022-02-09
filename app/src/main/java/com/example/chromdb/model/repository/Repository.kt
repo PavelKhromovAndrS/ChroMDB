@@ -13,6 +13,8 @@ interface Repository {
     suspend fun getConfigFromServer(): Images?
 
     suspend fun getTopRatedFromServer(): List<TopRatedMovieItem>?
-    suspend fun  getAllMovies(): List<TopRatedMovieItem>
-   suspend fun saveEntity(movie: TopRatedMovieItem)
+
+    suspend fun getAllMovies(): List<TopRatedMovieItem>
+
+    suspend fun saveEntity(movie: TopRatedMovieItem)
 }

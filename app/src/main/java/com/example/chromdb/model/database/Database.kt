@@ -4,7 +4,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.chromdb.App
-import com.example.chromdb.model.repository.Converters
+
 
 @androidx.room.Database(
     entities = [
