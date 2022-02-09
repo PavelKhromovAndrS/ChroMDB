@@ -18,4 +18,5 @@
     <string name="load_genres">Load Genres</string>
     <string name="genres">Genres</string>
     <string name="Adult_cb">Взрослый контент</string>
+    <string name="content_provider">Contacts</string>
 </resources>

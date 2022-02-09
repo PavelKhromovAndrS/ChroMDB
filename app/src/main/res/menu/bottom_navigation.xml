@@ -16,4 +16,10 @@
         android:id="@+id/profile_menu"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/full_movie_item_menu" />
+    <item
+        android:id="@+id/menu_content_provider"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/content_provider"
+        />
+
 </menu>

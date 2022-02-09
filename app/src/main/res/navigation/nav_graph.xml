@@ -16,17 +16,10 @@
         <action
             android:id="@+id/action_mainFragment_to_movieHistoryFragment"
             app:destination="@id/movieHistoryFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_contentProviderFragment"
+            app:destination="@id/contentProviderFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/searchMovieFragment"
-        android:name="com.example.chromdb.ui.screens.SearchMovieFragment"
-        android:label="fragment_search_movie"
-        tools:layout="@layout/fragment_search_movie" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.chromdb.ui.screens.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/favoriteMovieFragment"
         android:name="com.example.chromdb.ui.screens.FavoriteMovieFragment"
@@ -49,4 +42,8 @@
         android:name="com.example.chromdb.ui.screens.movie_history.MovieHistoryFragment"
         android:label="movie_history_fragment"
         tools:layout="@layout/movie_history_fragment" />
+    <fragment
+        android:id="@+id/contentProviderFragment"
+        android:name="com.example.chromdb.ui.screens.ContentProviderFragment"
+        android:label="ContentProviderFragment" />
 </navigation>

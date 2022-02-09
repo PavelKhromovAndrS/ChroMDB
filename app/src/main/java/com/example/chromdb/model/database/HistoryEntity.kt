@@ -1,10 +1,7 @@
 package com.example.chromdb.model.database
 
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.example.chromdb.model.repository.Converters
 
 @Entity
 data class HistoryEntity(
