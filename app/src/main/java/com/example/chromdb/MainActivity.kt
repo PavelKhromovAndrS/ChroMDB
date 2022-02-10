@@ -2,6 +2,7 @@ package com.example.chromdb
 
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,6 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        val push = intent.extras?.getString("push", "0")
+        Toast.makeText(this, push.toString(), Toast.LENGTH_SHORT).show()
+
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
