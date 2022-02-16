@@ -23,6 +23,7 @@ import com.example.chromdb.ui.screens.DetailsMovieFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val IS_ADULT_KEY = "IS_ADULT_KEY"
+private const val APP_PASSWORD = ""
 const val SECURE_URL = "https://image.tmdb.org/t/p/original"
 
 class MainFragment : Fragment() {
