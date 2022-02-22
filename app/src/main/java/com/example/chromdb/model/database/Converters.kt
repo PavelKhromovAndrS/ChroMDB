@@ -1,11 +1,11 @@
 package com.example.chromdb.model.database
 
 import androidx.room.TypeConverter
-import com.example.chromdb.model.entities.rest_entities.top_rated.TopRatedMovieItem
+import com.example.chromdb.model.entities.rest_entities.top_rated.MovieItem
 import com.google.gson.Gson
 
 class Converters {
-     fun convertMovieToEntity(movie: TopRatedMovieItem): HistoryEntity {
+     fun convertMovieToEntity(movie: MovieItem): HistoryEntity {
         return HistoryEntity(
             movie.adult,
             movie.backdrop_path,
@@ -24,9 +24,9 @@ class Converters {
         )
     }
 
-     fun convertHistoryEntityToMovie(entityList: List<HistoryEntity>): List<TopRatedMovieItem> {
+     fun convertHistoryEntityToMovie(entityList: List<HistoryEntity>): List<MovieItem> {
         return entityList.map {
-            TopRatedMovieItem(
+            MovieItem(
                 it.adult,
                 it.backdrop_path,
                 it.genre_ids,

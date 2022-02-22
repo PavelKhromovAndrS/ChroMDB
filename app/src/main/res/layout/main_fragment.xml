@@ -14,34 +14,32 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_margin"
         android:text="@string/popular_tv"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="32sp" />
+        android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popular_list_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/base_margin"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_margin"
         android:text="@string/top_rated"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="32sp" />
+        android:textSize="24sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/top_rated_list_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/base_margin"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

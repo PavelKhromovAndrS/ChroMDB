@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.chromdb.ui.main.MainFragment"
-        android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        android:label="main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_detailsMovieFragment"
             app:destination="@id/detailsMovieFragment" />
@@ -17,17 +16,21 @@
             android:id="@+id/action_mainFragment_to_movieHistoryFragment"
             app:destination="@id/movieHistoryFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_contentProviderFragment"
-            app:destination="@id/contentProviderFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_self"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteMovieFragment"
         android:name="com.example.chromdb.ui.screens.FavoriteMovieFragment"
         android:label="fragment_favorite_movie"
-        tools:layout="@layout/fragment_favorite_movie" />
+        tools:layout="@layout/fragment_favorite_movie" >
+        <action
+            android:id="@+id/action_favoriteMovieFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsMovieFragment"
         android:name="com.example.chromdb.ui.screens.DetailsMovieFragment"
@@ -44,11 +47,11 @@
         android:id="@+id/movieHistoryFragment"
         android:name="com.example.chromdb.ui.screens.movie_history.MovieHistoryFragment"
         android:label="movie_history_fragment"
-        tools:layout="@layout/movie_history_fragment" />
-    <fragment
-        android:id="@+id/contentProviderFragment"
-        android:name="com.example.chromdb.ui.screens.ContentProviderFragment"
-        android:label="ContentProviderFragment" />
+        tools:layout="@layout/movie_history_fragment" >
+        <action
+            android:id="@+id/action_movieHistoryFragment_to_detailsMovieFragment"
+            app:destination="@id/detailsMovieFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.chromdb.ui.screens.GoogleMapsFragment"

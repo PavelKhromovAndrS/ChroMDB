@@ -13,18 +13,16 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        val push = intent.extras?.getString("push", "0")
-        Toast.makeText(this, push.toString(), Toast.LENGTH_SHORT).show()
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.favorite_menu -> {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_mainFragment_to_movieHistoryFragment)
+                R.id.main_menu -> {
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_mainFragment_self)
                     true
                 }
-                R.id.search_movie_menu -> {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_mainFragment_to_contentProviderFragment)
+                R.id.favorite_menu -> {
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.action_mainFragment_to_movieHistoryFragment)
                     true
                 }
                 R.id.profile_menu -> {
